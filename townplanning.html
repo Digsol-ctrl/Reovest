@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Town Planning Services | ArcBuild</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0A2342;
+            --yellow: #FFB300;
+            --light-navy: #1C3D6A;
+            --light-yellow: #FFE194;
+            --gray: #F5F5F5;
+            --dark-gray: #444444;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background-color: var(--gray);
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--navy);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+        
+        .logo-text span {
+            color: var(--yellow);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 2rem;
+        }
+        
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--yellow);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--yellow);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .service-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(10, 35, 66, 0.8), rgba(10, 35, 66, 0.8)), url('https://images.unsplash.com/photo-1451479456262-b94f205059be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+            margin-bottom: 3rem;
+        }
+        
+        .service-hero-content {
+            max-width: 800px;
+        }
+        
+        .service-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .breadcrumb li {
+            margin: 0 0.5rem;
+            color: var(--light-yellow);
+        }
+        
+        .breadcrumb a {
+            color: var(--light-yellow);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Service Detail Section */
+        .service-detail {
+            padding: 2rem 0 5rem;
+        }
+        
+        .service-overview {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        @media (max-width: 900px) {
+            .service-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .service-category {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin: 0;
+        }
+        
+        .category-icon {
+            font-size: 1.2rem;
+            color: var(--navy);
+            transition: transform 0.3s;
+        }
+        
+        .category-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .category-content.active {
+            height: auto;
+            margin-top: 1rem;
+        }
+        
+        .service-item {
+            padding: 1rem;
+            background: var(--gray);
+            border-radius: 8px;
+            border-left: 4px solid var(--yellow);
+        }
+        
+        .service-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+        
+        .service-item p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
+        .benefits-section {
+            background: var(--navy);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+        
+        .benefits-section h2 {
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--yellow);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--navy);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--yellow);
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--yellow);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn i {
+            margin-left: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-col h4 {
+            color: var(--yellow);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--yellow);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--yellow);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--light-navy);
+            color: var(--white);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--yellow);
+            color: var(--navy);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-navy);
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: var(--white);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--navy);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 1rem 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 1.5rem 0;
+            }
+            
+            .service-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-text">Reovest Build<span>Tech</span> & Design</div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <div class="container service-hero-content">
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>&gt;</li>
+                <li><a href="index.html#services">Services</a></li>
+                <li>&gt;</li>
+                <li>Town Planning</li>
+            </ul>
+            <h1>Town Planning Services</h1>
+            <p>Comprehensive urban and regional planning solutions for sustainable development</p>
+        </div>
+    </section>
+
+    <!-- Service Detail Section -->
+    <section class="service-detail">
+        <div class="container">
+            <div class="service-overview">
+                <h2>Professional Town Planning Solutions</h2>
+                <p>Our Town Planning service offers comprehensive expertise in creating sustainable, functional, and aesthetically pleasing urban and rural environments. We work with government agencies, private developers, and communities to develop strategic plans that balance growth with environmental preservation and community needs.</p>
+                <p>With decades of experience in institutional development, spatial planning, and regulatory compliance, our team delivers end-to-end solutions for projects of all scales.</p>
+            </div>
+
+            <div class="service-content">
+                <!-- Column 1 -->
+                <div class="service-column">
+                    <!-- Institutional and Development Planning -->
+                    <div class="service-category">
+                        <div class="category-header">
+                            <h3 class="category-title">Institutional and Development Planning</h3>
+                            <span class="category-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="category-content">
+                            <div class="service-item">
+                                <h4>Analysis of Institutional Arrangements</h4>
+                                <p>Comprehensive evaluation of public, private, and NGO sector agencies to optimize organizational structures and workflows.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Decentralisation Issues</h4>
+                                <p>Expert analysis and solutions for effective decentralization of governance and service delivery.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Capacity Building Strategies</h4>
+                                <p>Developing tailored training and development programs for central and local government institutions.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Options for Institutional Change</h4>
+                                <p>Providing strategic guidance for organizational development and transformation initiatives.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Corporate Planning</h4>
+                                <p>Comprehensive corporate planning services for local authorities and agencies to ensure long-term sustainability.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Strategic and Physical Planning -->
+                    <div class="service-category">
+                        <div class="category-header">
+                            <h3 class="category-title">Strategic and Physical Planning</h3>
+                            <span class="category-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="category-content">
+                            <div class="service-item">
+                                <h4>National Physical Plans</h4>
+                                <p>Spatial interpretation and connection of national strategies and policies for cohesive development.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>National Planning Analysis</h4>
+                                <p>Comprehensive analysis and formulation of proposals for national planning and development initiatives.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Planning Instruments & Legislation</h4>
+                                <p>Development of national planning instruments, legislation and institutional arrangements.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Sector Strategies</h4>
+                                <p>Creating specialized strategies for all types of agencies and development sectors.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Social Impact Assessments</h4>
+                                <p>Comprehensive assessments for large projects to evaluate and mitigate social impacts.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Regional Planning and Development -->
+                    <div class="service-category">
+                        <div class="category-header">
+                            <h3 class="category-title">Regional Planning and Development</h3>
+                            <span class="category-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="category-content">
+                            <div class="service-item">
+                                <h4>Regional Planning Analysis</h4>
+                                <p>Comprehensive analysis, strategy and plan formulation for regional and provincial development.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Inter-regional Analysis</h4>
+                                <p>Expert analysis and policy formulation for coordination between different regions.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Urban Planning -->
+                    <div class="service-category">
+                        <div class="category-header">
+                            <h3 class="category-title">Urban Planning</h3>
+                            <span class="category-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="category-content">
+                            <div class="service-item">
+                                <h4>Master Plans & Structure Plans</h4>
+                                <p>Comprehensive development plans for cities and towns to guide sustainable growth.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Urbanization Analysis</h4>
+                                <p>Detailed analysis of urbanization issues and management strategies for urban growth and land-use.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Data for Decision-Making</h4>
+                                <p>Provision of critical data and information to support informed urban planning decisions.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Urban Layouts</h4>
+                                <p>Design of functional and aesthetically pleasing urban layouts for various development needs.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Commercial Centre Planning</h4>
+                                <p>Specialized planning and design services for commercial centers and business districts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="service-column">
+                    <!-- Rural Planning -->
+                    <div class="service-category">
+                        <div class="category-header">
+                            <h3 class="category-title">Rural Planning</h3>
+                            <span class="category-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="category-content">
+                            <div class="service-item">
+                                <h4>Rural Master Plans</h4>
+                                <p>Development of comprehensive master plans and district development plans for rural areas.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Rural Development Analysis</h4>
+                                <p>In-depth analysis of issues and actors in rural development to inform effective planning.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Sector Programme Coordination</h4>
+                                <p>Coordination and integration of sector programmes and projects for holistic rural development.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Baseline Surveys</h4>
+                                <p>Comprehensive baseline surveys and socio-economic studies to inform rural planning initiatives.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Layout Planning and Design -->
+                    <div class="service-category">
+                        <div class="category-header">
+                            <h3 class="category-title">Layout Planning and Design</h3>
+                            <span class="category-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="category-content">
+                            <div class="service-item">
+                                <h4>Comprehensive Layout Preparation</h4>
+                                <p>Preparation of layouts for industrial, commercial, residential, institutional and other uses.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Approval Processing</h4>
+                                <p>Professional submission of layouts for approval to relevant authorities and agencies.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subdivision and Consolidation of Land -->
+                    <div class="service-category">
+                        <div class="category-header">
+                            <h3 class="category-title">Subdivision and Consolidation of Land</h3>
+                            <span class="category-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="category-content">
+                            <div class="service-item">
+                                <h4>Land Subdivision Services</h4>
+                                <p>Submission of applications for subdivision of land for agricultural, residential and industrial purposes.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Permit Processing</h4>
+                                <p>Professional processing of permits and handling of appeal cases for land subdivision and consolidation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Environmental Planning and EIA -->
+                    <div class="service-category">
+                        <div class="category-header">
+                            <h3 class="category-title">Environmental Planning & EIA</h3>
+                            <span class="category-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="category-content">
+                            <div class="service-item">
+                                <h4>Environmental Audits</h4>
+                                <p>Comprehensive environmental audits for both rural and urban settings to assess compliance and impacts.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Strategic Environmental Assessments</h4>
+                                <p>Expert SEA services to evaluate the environmental implications of proposed policies, plans and programs.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Environmental Impact Assessments</h4>
+                                <p>Detailed EIAs to identify and mitigate potential environmental impacts of development projects.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Environmental Policy Formulation</h4>
+                                <p>Development of comprehensive environmental policies, including Local Agenda 21 initiatives.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Environmental Monitoring</h4>
+                                <p>Ongoing monitoring programs to track environmental indicators and ensure compliance.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>DEAPs and LEAPs</h4>
+                                <p>Development of District and Local Environmental Action Plans for sustainable development.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>State of Environment Reports</h4>
+                                <p>Comprehensive SOERs to document and communicate environmental conditions and trends.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Services -->
+                    <div class="service-category">
+                        <div class="category-header">
+                            <h3 class="category-title">Additional Services</h3>
+                            <span class="category-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="category-content">
+                            <div class="service-item">
+                                <h4>Local Economic Development</h4>
+                                <p>Feasibility studies, planning, and strategy development for local economic projects and initiatives.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Project Appraisal & Evaluation</h4>
+                                <p>Comprehensive appraisal and evaluation services for sector programs and individual projects.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Project Management</h4>
+                                <p>End-to-end project management including securing land, permissions, staff, and equipment.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Civil Engineering Design</h4>
+                                <p>Expert civil engineering designs for infrastructure and superstructures with full supervision services.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>Traffic Impact Assessments</h4>
+                                <p>Comprehensive assessments to evaluate and mitigate traffic impacts of development projects.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits Section -->
+            <div class="benefits-section">
+                <h2>Benefits of Our Town Planning Services</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Regulatory Compliance</h3>
+                        <p>Ensure your projects meet all local, regional, and national regulations</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Sustainable Development</h3>
+                        <p>Balance growth with environmental preservation and community needs</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Cost Efficiency</h3>
+                        <p>Identify potential issues early to avoid costly delays and revisions</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Stakeholder Alignment</h3>
+                        <p>Coordinate between various stakeholders for smooth project execution</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2>Ready to Plan Your Next Project?</h2>
+                <p>Contact our town planning experts today to discuss how we can help bring your vision to life</p>
+                <a href="#contact" class="btn">Get Started <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h4>Reovest</h4>
+                <p>Building dreams into reality with premium construction and architectural services.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#">House Plans</a></li>
+                    <li><a href="#">3D Plans & Rendering</a></li>
+                    <li><a href="#">Building Construction</a></li>
+                    <li><a href="#">Architectural Expertise</a></li>
+                    <li><a href="#">Town Planning</a></li>
+                    <li><a href="#">Building Renovations</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2025 ArcBuild. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Toggle category content
+        document.querySelectorAll('.category-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('.category-icon i');
+                
+                content.classList.toggle('active');
+                
+                if (content.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Open first category by default
+        document.querySelector('.category-content').classList.add('active');
+        document.querySelector('.category-icon i').classList.remove('fa-chevron-down');
+        document.querySelector('.category-icon i').classList.add('fa-chevron-up');
+    </script>
+</body>
+</html>

@@ -187,6 +187,11 @@
             justify-content: space-around;
             flex-wrap: wrap;
         }
+
+        .stat-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
         
         .stat-item {
             text-align: center;
@@ -228,6 +233,7 @@
             padding: 5rem 0;
             background: var(--gray);
         }
+
         
         .section-title {
             text-align: center;
@@ -255,6 +261,11 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
+
+        .services-grid a {
+            text-decoration: none;
+            color: var(--navy);
+        }
         
         .service-card {
             background: var(--white);
@@ -269,10 +280,16 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
-        .service-img {
+        .service-icon {
             height: 200px;
-            background-position: center;
-            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .service-icon i {
+            font-size: 150px;
+            color: var(--navy);
         }
         
         .service-content {
@@ -282,6 +299,15 @@
         .service-content h3 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+        }
+
+        .service-card button {
+            background-color: var(--navy);
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 8px;
+            border-radius: 12px;
         }
         
         /* Projects Section */
@@ -699,18 +725,6 @@
     <!-- Stats Section -->
     <section class="stats">
         <div class="container stats-container">
-            <!-- <div class="stat-item">
-                <div class="stat-number" id="projects-counter">0</div>
-                <di -->v class="stat-text">Projects Completed</div>
-            </div>
-<!--             <div class="stat-item">
-                <div class="stat-number">15+</div>
-                <div class="stat-text">Years Experience</div>
-            </div> -->
-            <div class="stat-item">
-                <div class="stat-number"></div>
-                <div class="stat-text">Professional Team</div>
-            </div>
             <div class="stat-item">
                 <div class="stat-text">Project Success Rate</div>
                 <div class="progress-bar">
@@ -730,7 +744,7 @@
             </div>
             <div class="about-container">
                 <div class="about-content">
-                    <h3>Building Excellence Since 2008</h3>
+                    <h3>Building Excellences</h3>
                     <p>Reovest is a premium construction and architecture company dedicated to turning our clients' dreams into reality. With  experience, we've established ourselves as leaders in innovative design and quality construction.</p>
                     <p>Our team of <strong style="
                     color:--navy">architects</strong> , <strong>engineers</strong style="
@@ -749,62 +763,91 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section
+    style="background-color: var(--gray);"
+    class="services" id="services">
         <div class="container">
             <div class="section-title">
                 <h2>Our Services</h2>
             </div>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('Media/Images/reovest-town-planning.jpg');"></div>
-                    <div class="service-content">
-                        <h3>House Plans</h3>
-                        <p>Detailed 2D architectural drawings that form the perfect blueprint for your dream home.</p>
+                <a href="#">
+                    <div class="service-card">
+                        <div class="service-icon" ><i class="fas fa-house-chimney-window" ></i></div>
+                        <div class="service-content">
+                            <h3>House Plans</h3>
+                            <p>Detailed 2D architectural drawings that form
+                                 the perfect blueprint for your dream home.</p>
+                            <button>Learn More</button>
+                        </div>
                     </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('Media/Images/reovest-3D-plans.jpg');"></div>
-                    <div class="service-content">
-                        <h3>3D Plans & Rendering</h3>
-                        <p>Visualize your future home with stunning 3D renders that bring your ideas to life.</p>
+                </a>
+
+                <a href="#">
+                    <div class="service-card">
+                        <div class="service-icon" ><i class="fas fa-cubes" ></i></div>
+                        <div class="service-content">
+                            <h3>3D Plans & Rendering</h3>
+                            <p>Visualize your future home with stunning 3D renders that bring your ideas to life.</p>
+                            <button>Learn More</button>
+                        </div>
                     </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('Media/Images/reovest-building-construction.jpg');"></div>
-                    <div class="service-content">
-                        <h3>Building Construction</h3>
-                        <p>From plans to reality, we handle every aspect of the construction process with precision.</p>
+                </a>
+
+                <a href="#">
+                    <div class="service-card">
+                        <div class="service-icon" ><i class="fas fa-building-circle-check" ></i></div>
+                        <div class="service-content">
+                            <h3>Building Construction</h3>
+                            <p>From plans to reality, we handle every aspect of the construction process with precision.</p>
+                            <button>Learn More</button>
+                        </div>
                     </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('Media/Images/reovest-town-planning.jpg');"></div>
-                    <div class="service-content">
-                        <h3>Architectural Expertise</h3>
-                        <p>Meet our talented architects and designers who will transform your vision into reality.</p>
+                </a>
+
+                <a href="#">
+                    <div class="service-card">
+                        <div class="service-icon" ><i class="fab fa-42-group"></i></div>
+                        <div class="service-content">
+                            <h3>Architectural Expertise</h3>
+                            <p>Meet our talented architects and designers who will transform your vision into reality.</p>
+                            <button>Learn More</button>
+                        </div>
                     </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('Media/Images/reovest-town-planning.jpg');"></div>
-                    <div class="service-content">
-                        <h3>Town Planning</h3>
-                        <p>Subdivision schemes, permits, zoning compliance & council liaison.</p>
+                </a>
+
+                <a href="townplanning.html">
+                    <div class="service-card">
+                        <div class="service-icon" ><i class="fas fa-city" ></i></div>
+                        <div class="service-content">
+                            <h3>Town Planning</h3>
+                            <p>Subdivision schemes, permits, zoning compliance & council liaison.</p>
+                            <button>Learn More</button>
+                        </div>
                     </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('Media/Images/reovest-building-construction.jpg');"></div>
-                    <div class="service-content">
-                        <h3>Building Renovations</h3>
-                        <p>Upgrade and modernize your existing structure with our expert renovation services.</p>
+                </a>
+
+                <a href="#">
+                    <div class="service-card">
+                        <div class="service-icon" ><i class="fas fa-paint-roller"></i></div>
+                        <div class="service-content">
+                            <h3>Building Renovations</h3>
+                            <p>Upgrade and modernize your existing structure with our expert renovation services.</p>
+                            <button>Learn More</button>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
 
  <!-- Projects Section -->
-    <section class="container">
+    <section class="container"
+    style="background-color: var(--gray);"
+    >
         <h2 class="section-title">Project Portfolio</h2>
-        <p class="text-center mb-5">Each project goes through multiple stages from planning to completion. The carousels below show the progression of each project through different construction phases.</p>
+        <p class="text-center mb-5">Each project goes through multiple stages from
+             planning to completion.</p>
         
         <div class="row">
             <!-- Project 1 -->
