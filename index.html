@@ -359,14 +359,15 @@
         }
         
         .carousel-indicators {
-            bottom: -40px;
+            bottom: -20px;
+            z-index: 9999;
         }
         
-        .carousel-indicators button {
+        .carousel-indicators [data-bs-target] {
             width: 12px;
-            height: 12px;
+            height: 20px;
             border-radius: 50%;
-            background-color: var(--primary);
+            background-color: var(--navy);
         }
         
         .project-content {
@@ -446,18 +447,15 @@
             min-width: 300px;
             border-radius: 10px;
             overflow: hidden;
+            
+            height:fit-content
+        }
+
+        .aboutVid {
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
         
-        .video-placeholder {
-            background: var(--navy);
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            cursor: pointer;
-        }
+        
         
         /* Testimonials */
         .testimonials {
@@ -857,21 +855,22 @@
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"></button>
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2"></button>
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"></button>
+                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="4"></button>
                         </div>
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
+                                <div class="carousel-item active" id="carousel1">
                                     <img src="Media/Images/Twinlakes1.jpg" class="d-block w-100 carousel-image" alt="Completed Mall">
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="Media/Images/Twinlakes2.jpg jpg" class="d-block w-100 carousel-image" alt="Foundation Stage">
+                                <div class="carousel-item" id="carousel2">
+                                    <img src="Media/Images/Twinlakes2.jpg" class="d-block w-100 carousel-image" alt="Foundation Stage">
                                 </div>
-                                <div class="carousel-item">
+                                <div class="carousel-item" id="carousel3">
                                     <img src="Media/Images/Twinlakes3.jpg" class="d-block w-100 carousel-image" alt="Construction Stage">
                                 </div>
-                                <div class="carousel-item">
+                                <div class="carousel-item" id="carousel4">
                                     <img src="Media/Images/Twinlakes4.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
                                 </div>
-                                <div class="carousel-item">
+                                <div class="carousel-item" id="carousel5">
                                     <img src="Media/Images/Twinlakes5.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
                                 </div>
                             </div>
@@ -905,25 +904,24 @@
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"></button>
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2"></button>
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"></button>
+                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="4"></button>
                         </div>
-                            <div class="carousel-inner">
+                        <div class="carousel-inner">
+                        
                             <div class="carousel-item active">
-                                <img src="https://images.unsplash.com/photo-1600607687644-aac4c4c201c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="d-block w-100 carousel-image" alt="Completed Mall">
+                                <img src="Media/Images/chisipiti1.jpg" class="d-block w-100 carousel-image " alt="Foundation Stage">
                             </div>
                             <div class="carousel-item">
-                                <img src="Media/Images/reovest-building-construction.jpg" class="d-block w-100 carousel-image" alt="Foundation Stage">
+                                <img src="Media/Images/chisipiti2.jpg" class="d-block w-100 carousel-image" alt="Construction Stage">
                             </div>
                             <div class="carousel-item">
-                                <img src="Media/Images/reovest-3D-plans.jpg" class="d-block w-100 carousel-image" alt="Construction Stage">
+                                <img src="Media/Images/chisipiti3" class="d-block w-100 carousel-image" alt="Interior Work">
                             </div>
                             <div class="carousel-item">
-                                <img src="Media/Images/reovest-renovations.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
+                                <img src="Media/Images/chisipiti4.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
                             </div>
-                             <div class="carousel-item">
-                                <img src="Media/Images/reovest-renovations.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
-                            </div>
-                             <div class="carousel-item">
-                                <img src="Media/Images/reovest-renovations.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
+                            <div class="carousel-item">
+                                <img src="Media/Images/chisipiti6.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
                             </div>
                         </div>
                     </div>
@@ -957,6 +955,7 @@
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"></button>
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2"></button>
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"></button>
+                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="4"></button>
                         </div>
                             <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -967,6 +966,9 @@
                             </div>
                             <div class="carousel-item">
                                 <img src="Media/Images/reovest-3D-plans.jpg" class="d-block w-100 carousel-image" alt="Construction Stage">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="Media/Images/reovest-renovations.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
                             </div>
                             <div class="carousel-item">
                                 <img src="Media/Images/reovest-renovations.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
@@ -1003,6 +1005,7 @@
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"></button>
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2"></button>
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"></button>
+                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"></button>
                         </div>
                             <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -1013,6 +1016,9 @@
                             </div>
                             <div class="carousel-item">
                                 <img src="Media/Images/reovest-3D-plans.jpg" class="d-block w-100 carousel-image" alt="Construction Stage">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="Media/Images/reovest-renovations.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
                             </div>
                             <div class="carousel-item">
                                 <img src="Media/Images/reovest-renovations.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
@@ -1049,6 +1055,7 @@
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"></button>
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2"></button>
                             <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"></button>
+                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"></button>
                         </div>
                             <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -1059,6 +1066,9 @@
                             </div>
                             <div class="carousel-item">
                                 <img src="Media/Images/reovest-3D-plans.jpg" class="d-block w-100 carousel-image" alt="Construction Stage">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="Media/Images/reovest-renovations.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
                             </div>
                             <div class="carousel-item">
                                 <img src="Media/Images/reovest-renovations.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
@@ -1288,7 +1298,7 @@
                     console.log("The Video Is no longer Visible")
                 }
             })
-        } , {threshold:0.5})
+        } , {threshold:1.0})
         const aboutVid = document.querySelector('.aboutVid')
         vidObserver.observe(aboutVid)
 
