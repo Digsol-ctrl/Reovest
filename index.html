@@ -88,7 +88,7 @@
         .logo-text {
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
-            font-size: 1rem;
+            font-size: 1.8rem;
             color: var(--white);
         }
         
@@ -130,6 +130,33 @@
         
         .nav-menu a:hover:after {
             width: 100%;
+        }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--white);
+            transition: 0.3s;
+        }
+
+        .hamburger.active div:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active div:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
         }
         
         /* Hero Section */
@@ -191,6 +218,11 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
+
+        .btn-small {
+            padding: 0.5rem 1.5rem;
+            font-size: 0.9rem;
+        }
         
         /* Stats Section */
         .stats {
@@ -241,8 +273,6 @@
             transition: width 3s;
         }
         
-    
-        
         /* Services Section */
         .services {
             padding: 5rem 0;
@@ -288,6 +318,7 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
         }
         
         .service-card:hover {
@@ -296,14 +327,15 @@
         }
         
         .service-icon {
-            height: 200px;
+            height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 1.5rem 0;
         }
 
         .service-icon i {
-            font-size: 150px;
+            font-size: 3.5rem;
             color: var(--navy);
         }
         
@@ -313,16 +345,70 @@
         
         .service-content h3 {
             font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
         }
 
-        .service-card button {
-            background-color: var(--navy);
-            border: none;
-            color: white;
-            font-weight: bold;
-            padding: 8px;
-            border-radius: 12px;
+        .service-content p {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .service-card .btn-container {
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        /* Town Planning Services Section */
+        .town-planning-services {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .tp-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tp-service-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(10, 35, 66, 0.1);
+        }
+
+        .tp-service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            border-color: var(--yellow);
+        }
+
+        .tp-service-icon {
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .tp-service-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--navy);
+            text-align: center;
+        }
+
+        .tp-service-content p {
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--dark-gray);
+        }
+
+        .tp-btn-container {
+            text-align: center;
         }
         
         /* Projects Section */
@@ -437,11 +523,6 @@
             }
         }
 
-
-
-
-      
-      
         .about {
             padding: 5rem 0;
             background: var(--gray);
@@ -471,8 +552,6 @@
         .aboutVid {
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-        
-        
         
         /* Testimonials */
         .testimonials {
@@ -682,16 +761,7 @@
             }
             
             .hamburger {
-                display: block;
-                cursor: pointer;
-            }
-            
-            .hamburger div {
-                width: 25px;
-                height: 3px;
-                background-color: var(--white);
-                margin: 5px;
-                transition: all 0.3s ease;
+                display: flex;
             }
             
             .hero h1 {
@@ -700,6 +770,10 @@
             
             .stat-item {
                 min-width: 50%;
+            }
+
+            .logo-text {
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -714,6 +788,7 @@
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#town-planning-services">Town Planning</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -729,7 +804,7 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <span  class="taglines"><h1>Building Dreams Into Reality</h1></span>
+            <span class="taglines"><h1>Building Dreams Into Reality</h1></span>
             <p>Premium construction and architectural services with experience creating exceptional spaces that inspire and endure.</p>
             <a href="#contact" class="btn">Start Your Project</a>
         </div>
@@ -748,7 +823,6 @@
         </div>
     </section>
 
-
     <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
@@ -757,96 +831,66 @@
             </div>
             <div class="about-container">
                 <div class="about-content">
-                    <h3>Building Excellences</h3>
-                    <p>Reovest is a premium construction and architecture company dedicated to turning our clients' dreams into reality. With  experience, we've established ourselves as leaders in innovative design and quality construction.</p>
-                    <p>Our team of <strong style="
-                    color:--navy">architects</strong> , <strong>engineers</strong style="
-                    color:--navy"> , and <strong style="
-                    color:--navy">builders</strong>  work collaboratively to ensure every project meets the highest standards of excellence. We believe in transparent communication, attention to detail, and delivering on our promises.</p>
+                    <h3>Building Excellence</h3>
+                    <p>Reovest is a premium construction and architecture company dedicated to turning our clients' dreams into reality. With years of experience, we've established ourselves as leaders in innovative design and quality construction.</p>
+                    <p>Our team of <strong>architects</strong>, <strong>engineers</strong>, and <strong>builders</strong> work collaboratively to ensure every project meets the highest standards of excellence. We believe in transparent communication, attention to detail, and delivering on our promises.</p>
                     <p>From initial concept to final completion, we're with you every step of the way, ensuring your vision is realized exactly as you imagined—or even better.</p>
                 </div>
                 <div class="about-video">
-                    <video class="aboutVid" src="Media/Video/ezgif-7c89e1aff64884.mp4" width="100%" height="350px" controls>Your Browser Do not suppord Videos</video>
-                    <!-- <div class="video-placeholder">
-                        <i class="fas fa-play-circle" style="font-size: 4rem;"></i>
-                    </div> -->
+                    <video class="aboutVid" src="Media/Video/ezgif-7c89e1aff64884.mp4" width="100%" height="350px" controls>Your browser does not support videos</video>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section
-    style="background-color: var(--gray);"
-    class="services" id="services">
+    <section class="services" id="services">
         <div class="container">
             <div class="section-title">
-                <h2>Our Services</h2>
+                <h2>Our Core Services</h2>
             </div>
             <div class="services-grid">
                 <a href="#">
                     <div class="service-card">
-                        <div class="service-icon" ><i class="fas fa-house-chimney-window" ></i></div>
+                        <div class="service-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
                         <div class="service-content">
-                            <h3>House Plans</h3>
-                            <p>Detailed 2D architectural drawings that form
-                                 the perfect blueprint for your dream home.</p>
-                            <button>Learn More</button>
+                            <h3>Architectural Design</h3>
+                            <p>Comprehensive architectural design services from concept to detailed construction drawings for residential and commercial projects.</p>
+                            <div class="btn-container">
+                                <a href="#" class="btn btn-small">Learn More</a>
+                            </div>
                         </div>
                     </div>
                 </a>
 
                 <a href="3DPlans.html">
                     <div class="service-card">
-                        <div class="service-icon" ><i class="fas fa-cubes" ></i></div>
+                        <div class="service-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
                         <div class="service-content">
-                            <h3>3D Plans & Rendering</h3>
-                            <p>Visualize your future home with stunning 3D renders that bring your ideas to life.</p>
-                            <button>See Projects</button>
+                            <h3>3D Visualization</h3>
+                            <p>Photorealistic 3D renders and virtual tours that bring your architectural vision to life before construction begins.</p>
+                            <div class="btn-container">
+                                <a href="3DPlans.html" class="btn btn-small">View Portfolio</a>
+                            </div>
                         </div>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="service-card">
-                        <div class="service-icon" ><i class="fas fa-building-circle-check" ></i></div>
+                        <div class="service-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
                         <div class="service-content">
                             <h3>Building Construction</h3>
-                            <p>From plans to reality, we handle every aspect of the construction process with precision.</p>
-                            <button>Learn More</button>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#">
-                    <div class="service-card">
-                        <div class="service-icon" ><i class="fab fa-42-group"></i></div>
-                        <div class="service-content">
-                            <h3>Architectural Expertise</h3>
-                            <p>Meet our talented architects and designers who will transform your vision into reality.</p>
-                            <button>Learn More</button>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="townplanning.html">
-                    <div class="service-card">
-                        <div class="service-icon" ><i class="fas fa-city" ></i></div>
-                        <div class="service-content">
-                            <h3>Town Planning</h3>
-                            <p>Subdivision schemes, permits, zoning compliance & council liaison.</p>
-                            <button>Learn More</button>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#">
-                    <div class="service-card">
-                        <div class="service-icon" ><i class="fas fa-paint-roller"></i></div>
-                        <div class="service-content">
-                            <h3>Building Renovations</h3>
-                            <p>Upgrade and modernize your existing structure with our expert renovation services.</p>
-                            <button>Learn More</button>
+                            <p>End-to-end construction management ensuring quality, timely delivery, and adherence to budget for all projects.</p>
+                            <div class="btn-container">
+                                <a href="#" class="btn btn-small">Learn More</a>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -854,291 +898,262 @@
         </div>
     </section>
 
- <!-- Projects Section -->
-    <section class="container"
-    style="background-color: var(--gray);"
-    >
-        <h2 class="section-title">Project Portfolio</h2>
-        <p class="text-center mb-5">Each project goes through multiple stages from
-             planning to completion.</p>
-        
-        <div class="row">
-            <!-- Project 1 -->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="project-card card">
-                    <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="4"></button>
-                        </div>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active" id="carousel1">
-                                    <img src="Media/Images/Twinlakes1.jpg" class="d-block w-100 carousel-image" alt="Completed Mall">
-                                </div>
-                                <div class="carousel-item" id="carousel2">
-                                    <img src="Media/Images/Twinlakes2.jpg" class="d-block w-100 carousel-image" alt="Foundation Stage">
-                                </div>
-                                <div class="carousel-item" id="carousel3">
-                                    <img src="Media/Images/Twinlakes3.jpg" class="d-block w-100 carousel-image" alt="Construction Stage">
-                                </div>
-                                <div class="carousel-item" id="carousel4">
-                                    <img src="Media/Images/Twinlakes4.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
-                                </div>
-                                <div class="carousel-item" id="carousel5">
-                                    <img src="Media/Images/Twinlakes5.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
-                                </div>
-                            </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">8 Roomed House</h3>
-                        <p class="card-text">A state-of-the-art office building with sustainable design features and smart technology integration.</p>
-                        <div class="project-status">
-                            <div class="status-item">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>--</span>
-                            </div>
-                            <div class="status-item">
-                                <i class="fas fa-hard-hat"></i>
-                                <span>90% Done</span>
-                            </div>
-                            <div class="status-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Twinlakes Norton</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                        <!-- Project 2 -->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="project-card card">
-                    <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="4"></button>
-                        </div>
-                        <div class="carousel-inner">
-                        
-                            <div class="carousel-item active">
-                                <img src="Media/Images/chisipiti1.jpg" class="d-block w-100 carousel-image " alt="Foundation Stage">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/Images/chisipiti2.jpg" class="d-block w-100 carousel-image" alt="Construction Stage">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/Images/chisipiti3.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/Images/chisipiti4.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/Images/chisipiti6.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Home Extention</h3>
-                        <p class="card-text">A state-of-the-art office building with sustainable design features and smart technology integration.</p>
-                        <div class="project-status">
-                            <div class="status-item">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>1 Month</span>
-                            </div>
-                            <div class="status-item">
-                                <i class="fas fa-hard-hat"></i>
-                                <span>100% Done</span>
-                            </div>
-                            <div class="status-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Chisipiti Hre</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-                        <!-- Project 3 -->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="project-card card">
-                    <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="4"></button>
-                        </div>
-                            <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="Media/3DPlans/IMG-20250908-WA0093.jpg" class="d-block w-100 carousel-image" alt="Completed Mall">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/3DPlans/IMG-20250908-WA0101.jpg" class="d-block w-100 carousel-image" alt="Foundation Stage">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/3DPlans/IMG-20250908-WA0103.jpg" class="d-block w-100 carousel-image" alt="Construction Stage">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/3DPlans/IMG-20250908-WA0105.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/3DPlans/IMG-20250908-WA0107.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">3D Plans</h3>
-                        <p class="card-text">A state-of-the-art office building with sustainable design features and smart technology integration.</p>
-                        <a href="3DPlans.html">Explore More</a>
-                        <div class="project-status">
-                            <div class="status-item">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>--</span>
-                            </div>
-                            <div class="status-item">
-                                <i class="fas fa-hard-hat"></i>
-                                <span>100% Done</span>
-                            </div>
-                            <div class="status-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>--</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-                        <!-- Project 4 -->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="project-card card">
-                    <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="4"></button>
-                        </div>
-                            <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="Media/3DPlans/IMG-20250908-WA0213.jpg" alt="Completed Mall">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/3DPlans/IMG-20250908-WA0192.jpg" class="d-block w-100 carousel-image" alt="Foundation Stage">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/3DPlans/IMG-20250908-WA0211.jpg" class="d-block w-100 carousel-image" alt="Construction Stage">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/3DPlans/IMG-20250908-WA0213.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/3DPlans/IMG-20250908-WA0219.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Shopping area</h3>
-                        <!-- <p class="card-text">A state-of-the-art office building with sustainable design features and smart technology integration.</p> -->
-                        <div class="project-status">
-                            <div class="status-item">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>12 Months</span>
-                            </div>
-                            <div class="status-item">
-                                <i class="fas fa-hard-hat"></i>
-                                <span>85% Done</span>
-                            </div>
-                            <div class="status-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Downtown</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-                        <!-- Project 5 -->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="project-card card">
-                    <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"></button>
-                            <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"></button>
-                        </div>
-                            <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="https://images.unsplash.com/photo-1600607687644-aac4c4c201c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="d-block w-100 carousel-image" alt="Completed Mall">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/Images/reovest-building-construction.jpg" class="d-block w-100 carousel-image" alt="Foundation Stage">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/Images/reovest-3D-plans.jpg" class="d-block w-100 carousel-image" alt="Construction Stage">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/Images/reovest-renovations.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="Media/Images/reovest-renovations.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Modern Office Complex</h3>
-                        <p class="card-text">A state-of-the-art office building with sustainable design features and smart technology integration.</p>
-                        <div class="project-status">
-                            <div class="status-item">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>12 Months</span>
-                            </div>
-                            <div class="status-item">
-                                <i class="fas fa-hard-hat"></i>
-                                <span>85% Done</span>
-                            </div>
-                            <div class="status-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Downtown</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Testimonials Section -->
-    <!-- <section class="testimonials">
+    <!-- Town Planning Services Section -->
+    <section class="town-planning-services" id="town-planning-services">
         <div class="container">
             <div class="section-title">
-                <h2>What Our Clients Say</h2>
+                <h2>Town Planning & Land Services</h2>
+                <p>Comprehensive town planning and land development solutions tailored for Zimbabwe's unique regulatory environment</p>
             </div>
-            <div class="testimonial-slider">
-                <div class="testimonial active">
-                    <p class="testimonial-text">"Reovest transformed our outdated home into a modern masterpiece. Their attention to detail and professional approach made the entire renovation process smooth and enjoyable."</p>
-                    <p class="testimonial-author">- Sarah Johnson, Homeowner</p>
+            
+            <div class="tp-services-grid">
+                <div class="tp-service-card">
+                    <div class="tp-service-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="tp-service-content">
+                        <h3>Land Subdivision</h3>
+                        <p>Professional subdivision of land for residential, commercial, and industrial purposes within urban development boundaries.</p>
+                        <div class="tp-btn-container">
+                            <a href="townplanning.html#subdivision" class="btn btn-small">Learn More</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="testimonial">
-                    <p class="testimonial-text">"The architectural designs provided by Reovest were innovative yet practical. They managed to incorporate all our requirements while staying within budget."</p>
-                    <p class="testimonial-author">- Michael Thompson, Commercial Client</p>
+
+                <div class="tp-service-card">
+                    <div class="tp-service-icon">
+                        <i class="fas fa-merge"></i>
+                    </div>
+                    <div class="tp-service-content">
+                        <h3>Property Consolidation</h3>
+                        <p>Combining multiple properties into one to optimize land use efficiency and unlock development opportunities.</p>
+                        <div class="tp-btn-container">
+                            <a href="townplanning.html#consolidation" class="btn btn-small">Learn More</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="testimonial">
-                    <p class="testimonial-text">"From the initial consultation to the final walkthrough, the Reovest team was professional, responsive, and clearly passionate about their work. Our new office space has received countless compliments."</p>
-                    <p class="testimonial-author">- Jennifer Williams, Business Owner</p>
+
+                <div class="tp-service-card">
+                    <div class="tp-service-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="tp-service-content">
+                        <h3>Land Zoning</h3>
+                        <p>Changing land use zones to accommodate residential, commercial, industrial, or mixed-use developments aligned with community goals.</p>
+                        <div class="tp-btn-container">
+                            <a href="townplanning.html#rezoning" class="btn btn-small">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="tp-service-card">
+                    <div class="tp-service-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <div class="tp-service-content">
+                        <h3>Township Establishment</h3>
+                        <p>Converting agricultural land into designated residential, commercial, or industrial areas through comprehensive planning procedures.</p>
+                        <div class="tp-btn-container">
+                            <a href="townplanning.html#township" class="btn btn-small">Learn More</a>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="tp-service-card">
+                    <div class="tp-service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <div class="tp-service-content">
+                        <h3>Consent Use Applications</h3>
+                        <p>Obtaining permissions for specific land uses without changing the primary zoning classification of your property.</p>
+                        <div class="tp-btn-container">
+                            <a href="townplanning.html#consent" class="btn btn-small">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="tp-service-card">
+                    <div class="tp-service-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="tp-service-content">
+                        <h3>Environmental Impact Assessment</h3>
+                        <p>Comprehensive environmental evaluations for proposed projects to ensure sustainable development and regulatory compliance.</p>
+                        <div class="tp-btn-container">
+                            <a href="townplanning.html#eia" class="btn btn-small">Learn More</a>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="townplanning.html" class="btn">View All Town Planning Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Project Portfolio</h2>
+            <p class="text-center mb-5">Each project goes through multiple stages from planning to completion.</p>
+            
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card card">
+                        <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active"></button>
+                                <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"></button>
+                                <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2"></button>
+                                <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"></button>
+                                <button type="button" data-bs-target="#carousel1" data-bs-slide-to="4"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="Media/Images/Twinlakes1.jpg" class="d-block w-100 carousel-image" alt="8 Roomed House">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Media/Images/Twinlakes2.jpg" class="d-block w-100 carousel-image" alt="Foundation Stage">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Media/Images/Twinlakes3.jpg" class="d-block w-100 carousel-image" alt="Construction Stage">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Media/Images/Twinlakes4.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Media/Images/Twinlakes5.jpg" class="d-block w-100 carousel-image" alt="Completed Project">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">8 Roomed House</h3>
+                            <p class="card-text">A luxurious residential property featuring modern design elements and premium finishes.</p>
+                            <div class="project-status">
+                                <div class="status-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>--</span>
+                                </div>
+                                <div class="status-item">
+                                    <i class="fas fa-hard-hat"></i>
+                                    <span>90% Done</span>
+                                </div>
+                                <div class="status-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Twinlakes Norton</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card card">
+                        <div id="carousel2" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carousel2" data-bs-slide-to="0" class="active"></button>
+                                <button type="button" data-bs-target="#carousel2" data-bs-slide-to="1"></button>
+                                <button type="button" data-bs-target="#carousel2" data-bs-slide-to="2"></button>
+                                <button type="button" data-bs-target="#carousel2" data-bs-slide-to="3"></button>
+                                <button type="button" data-bs-target="#carousel2" data-bs-slide-to="4"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="Media/Images/chisipiti1.jpg" class="d-block w-100 carousel-image" alt="Home Extension">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Media/Images/chisipiti2.jpg" class="d-block w-100 carousel-image" alt="Extension Construction">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Media/Images/chisipiti3.jpg" class="d-block w-100 carousel-image" alt="Interior Work">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Media/Images/chisipiti4.jpg" class="d-block w-100 carousel-image" alt="Completed Extension">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Media/Images/chisipiti6.jpg" class="d-block w-100 carousel-image" alt="Final Result">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Home Extension</h3>
+                            <p class="card-text">Seamless integration of additional living space to existing residential property.</p>
+                            <div class="project-status">
+                                <div class="status-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>1 Month</span>
+                                </div>
+                                <div class="status-item">
+                                    <i class="fas fa-hard-hat"></i>
+                                    <span>100% Done</span>
+                                </div>
+                                <div class="status-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Chisipiti Hre</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card card">
+                        <div id="carousel3" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carousel3" data-bs-slide-to="0" class="active"></button>
+                                <button type="button" data-bs-target="#carousel3" data-bs-slide-to="1"></button>
+                                <button type="button" data-bs-target="#carousel3" data-bs-slide-to="2"></button>
+                                <button type="button" data-bs-target="#carousel3" data-bs-slide-to="3"></button>
+                                <button type="button" data-bs-target="#carousel3" data-bs-slide-to="4"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="Media/3DPlans/IMG-20250908-WA0093.jpg" class="d-block w-100 carousel-image" alt="3D Plans">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Media/3DPlans/IMG-20250908-WA0101.jpg" class="d-block w-100 carousel-image" alt="3D Rendering">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Media/3DPlans/IMG-20250908-WA0103.jpg" class="d-block w-100 carousel-image" alt="3D Interior">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Media/3DPlans/IMG-20250908-WA0105.jpg" class="d-block w-100 carousel-image" alt="3D Design">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Media/3DPlans/IMG-20250908-WA0107.jpg" class="d-block w-100 carousel-image" alt="3D Visualization">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">3D Architectural Plans</h3>
+                            <p class="card-text">Photorealistic 3D visualizations for residential and commercial projects.</p>
+                            <div class="project-status">
+                                <div class="status-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>--</span>
+                                </div>
+                                <div class="status-item">
+                                    <i class="fas fa-hard-hat"></i>
+                                    <span>100% Done</span>
+                                </div>
+                                <div class="status-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Various Locations</span>
+                                </div>
+                            </div>
+                            <div class="text-center mt-3">
+                                <a href="3DPlans.html" class="btn btn-small">Explore More 3D Plans</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -1151,13 +1166,19 @@
                     <h3>Start Your Project Today</h3>
                     <p>Ready to bring your vision to life? Contact us for a consultation and let's discuss how we can create something exceptional together.</p>
                     <div class="contact-details">
-                        <p><i class="fas fa-map-marker-alt"></i> Mutoko</p>
-                        <p><i class="fas fa-phone"></i> 077777777</p>
-                        <p><i class="fas fa-envelope"></i> info@Reovest.co.zw</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Mutoko, Zimbabwe</p>
+                        <p><i class="fas fa-phone"></i> +263 77 777 7777</p>
+                        <p><i class="fas fa-envelope"></i> info@reovest.co.zw</p>
+                    </div>
+                    <div class="mt-4">
+                        <h4>Business Hours</h4>
+                        <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                        <p>Saturday: 9:00 AM - 1:00 PM</p>
+                        <p>Sunday: Closed</p>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
+                    <form id="contactForm">
                         <div class="form-group">
                             <input type="text" class="form-input" placeholder="Your Name" required>
                         </div>
@@ -1165,10 +1186,22 @@
                             <input type="email" class="form-input" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Subject">
+                            <input type="tel" class="form-input" placeholder="Your Phone Number">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-input" placeholder="Your Message" required></textarea>
+                            <select class="form-input" required>
+                                <option value="">Select Service</option>
+                                <option value="architecture">Architectural Design</option>
+                                <option value="3d">3D Visualization</option>
+                                <option value="construction">Construction Management</option>
+                                <option value="town-planning">Town Planning</option>
+                                <option value="subdivision">Land Subdivision</option>
+                                <option value="rezoning">Land Rezoning</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input" placeholder="Your Message" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn">Send Message</button>
                     </form>
@@ -1177,15 +1210,14 @@
         </div>
     </section>
 
-    
     <!-- Footer -->
     <footer>
         <div class="container footer-container">
             <div class="footer-col">
                 <h4>Reovest</h4>
-                <p>Building dreams into reality with premium construction and architectural services.</p>
+                <p>Building dreams into reality with premium construction and architectural services since 2008.</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/profile.php?id=61572669396263"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61572669396263" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -1194,12 +1226,12 @@
             <div class="footer-col">
                 <h4>Services</h4>
                 <ul class="footer-links">
-                    <li><a href="#">House Plans</a></li>
-                    <li><a href="#">3D Plans & Rendering</a></li>
-                    <li><a href="#">Building Construction</a></li>
-                    <li><a href="#">Architectural Expertise</a></li>
-                    <li><a href="#">Town Planning</a></li>
-                    <li><a href="#">Building Renovations</a></li>
+                    <li><a href="#services">Architectural Design</a></li>
+                    <li><a href="3DPlans.html">3D Visualization</a></li>
+                    <li><a href="#services">Construction Management</a></li>
+                    <li><a href="#town-planning-services">Town Planning Services</a></li>
+                    <li><a href="townplanning.html">Land Subdivision</a></li>
+                    <li><a href="townplanning.html">Property Consolidation</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1207,6 +1239,7 @@
                 <ul class="footer-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#town-planning-services">Town Planning</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -1214,65 +1247,67 @@
             </div>
         </div>
         <div class="container copyright">
-            <p>&copy; 2025 Reovest. All Rights Reserved.</p>
+            <p>&copy; 2025 Reovest BuildTech & Design. All Rights Reserved.</p>
         </div>
     </footer>
 
     <!-- WhatsApp Button -->
-    <a 
-    style="
-    text-decoration: none;
-    "
-    href="https://wa.me/+263774998930" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/+263774998930" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
-      /*   // Counter Animation
-        function animateCounter() {
-            const counter = document.getElementById('projects-counter');
-            let count = 0;
-            const target = 120;
-            const duration = 2000; // 2 seconds
-            const increment = target / (duration / 16); // 60fps
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close menu when clicking links
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Initialize carousels
+        $(document).ready(function(){
+            $('.carousel').carousel({
+                interval: 4000,
+                pause: "hover"
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            const updateCounter = () => {
-                if (count < target) {
-                    count += increment;
-                    counter.textContent = Math.round(count) + '+';
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    counter.textContent = target + '+';
-                }
-            };
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
             
-            updateCounter();
-        } */
-        
-        
-/*         // Testimonial Slider
-        let currentTestimonial = 0;
-        const testimonials = document.querySelectorAll('.testimonial');
-        
-        function showTestimonial(index) {
-            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
-            testimonials[index].classList.add('active');
-        }
-        
-        function nextTestimonial() {
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            showTestimonial(currentTestimonial);
-        }
-        
-        // Auto-rotate testimonials
-        setInterval(nextTestimonial, 5000); */
-        
+            if (!name || !email) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Simulate form submission
+            alert('Thank you for your message! We will contact you within 24 hours.');
+            this.reset();
+        });
+
         // Initialize when page loads
         window.addEventListener('load', () => {
-            /* animateCounter(); */
-            
             // Animate elements on scroll
-            const animatedElements = document.querySelectorAll('.service-card, .project-card, .about-content, .about-video');
+            const animatedElements = document.querySelectorAll('.service-card, .tp-service-card, .project-card, .about-content, .about-video');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1281,7 +1316,7 @@
                         entry.target.style.transform = 'translateY(0)';
                     }
                 });
-            }, { threshold: 0.25 });
+            }, { threshold: 0.15 });
             
             animatedElements.forEach(element => {
                 element.style.opacity = 0;
@@ -1291,7 +1326,8 @@
             });
         });
 
-        const progObserver = new IntersectionObserver((entries,observer) => {
+        // Progress bar animation
+        const progObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.width = '98%';
@@ -1299,37 +1335,42 @@
                     entry.target.style.width = '0%';
                 }
             });
-        }, {
-            threshold:0.5
-        } )
+        }, { threshold: 0.5 });
 
         const progBar = document.querySelector(".progress-fill");
-        progObserver.observe(progBar)
+        progObserver.observe(progBar);
 
-        const vidObserver = new IntersectionObserver((entries,observer) => {
+        // Video play/pause on scroll
+        const vidObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    console.log("Video Is Now Visible")
-                    entry.target.play()
+                    entry.target.play();
                 } else {
-                    entry.target.pause()
-                    console.log("The Video Is no longer Visible")
+                    entry.target.pause();
                 }
-            })
-        } , {threshold:1.0})
-        const aboutVid = document.querySelector('.aboutVid')
-        vidObserver.observe(aboutVid)
+            });
+        }, { threshold: 0.8 });
+        
+        const aboutVid = document.querySelector('.aboutVid');
+        if (aboutVid) {
+            vidObserver.observe(aboutVid);
+        }
 
-    </script>
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        // Initialize carousels with auto-cycling
-        $(document).ready(function(){
-            $('.carousel').carousel({
-                interval: 3000, // Change slide every 3 seconds
-                pause: "hover" // Pause on hover
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
