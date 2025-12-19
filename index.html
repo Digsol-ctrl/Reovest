@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Reovest | Building Zimbabwe’s Vision Into Reality</title>
-    <meta name="description" content="Reovest is a Zimbabwe-based construction and architectural solutions company delivering building, structural, and design services from concept to completion. We combine innovation, quality craftsmanship, and local expertise to build for today and tomorrow." />
-    <meta name="keywords" content="Reovest, construction Zimbabwe, architectural design, structural engineering, building contractors, property development, Harare construction, design and build, Zimbabwe builders" />
-    <meta name="author" content="Reovest (Pvt) Ltd" />
+        <title>Craft Build Homes | Building Zimbabwe’s Vision Into Reality</title>
+    <meta name="description" content="Craft Build Homes is a Zimbabwe-based construction and architectural solutions company delivering building, structural, and design services from concept to completion. We combine innovation, quality craftsmanship, and local expertise to build for today and tomorrow." />
+    <meta name="keywords" content="Craft Build Homes, construction Zimbabwe, architectural design, structural engineering, building contractors, property development, Harare construction, design and build, Zimbabwe builders" />
+    <meta name="author" content="Craft Build Homes (Pvt) Ltd" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://reovest.pages.dev/" />
+    <link rel="canonical" href="https://craftbuildhomes.co.zw/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- 🧭 Open Graph (Facebook, LinkedIn, WhatsApp) -->
     <meta property="og:locale" content="en_ZW" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Reovest | Building Zimbabwe’s Vision Into Reality" />
-    <meta property="og:description" content="Reovest delivers expert construction, architectural design, and structural engineering services across Zimbabwe. From concept to completion — we build for the future." />
-    <meta property="og:image" content="https://reovest.pages.dev/Media/images/reovest-team.jpg" />
-    <meta property="og:image:alt" content="Reovest construction site and architectural design in Zimbabwe" />
-    <meta property="og:url" content="https://reovest.pages.dev/" />
-    <meta property="og:site_name" content="Reovest" />
-    <title>Reovest | Building Dreams Into Reality</title>
+    <meta property="og:title" content="Craft Build Homes | Building Zimbabwe’s Vision Into Reality" />
+    <meta property="og:description" content="Craft Build Homes delivers expert construction, architectural design, and structural engineering services across Zimbabwe. From concept to completion — we build for the future." />
+    <meta property="og:image" content="https://craftbuildhomes.co.zw/Media/images/reovest-team.jpg" />
+    <meta property="og:image:alt" content="Craft Build Homes construction site and architectural design in Zimbabwe" />
+    <meta property="og:url" content="https://craftbuildhomes.co.zw/" />
+    <meta property="og:site_name" content="Craft Build Homes" />
+    <title>Craft Build Homes | Building Dreams Into Reality</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <!-- Bootstrap 5 CSS -->
@@ -161,69 +161,144 @@
         
         /* Hero Section */
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(10, 35, 66, 0.8), rgba(10, 35, 66, 0.8)), url('Media/Images/reovest-building.jpg') no-repeat center center/cover;
+            min-height: 72vh;
+            height: auto;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(180deg, rgba(10, 35, 66, 0.65), rgba(10, 35, 66, 0.35)), url('Media/Images/reovest-building.jpg') no-repeat center center/cover;
+            background-size: cover;
+            color: var(--white);
+            padding: 120px 1rem 80px;
+            position: relative;
+            overflow: hidden;
+            transition: background 300ms ease;
+        }
+
+        /* When hero is in view we slightly brighten the overlay to make the image clearer */
+        .hero.hero-inview {
+            background: linear-gradient(180deg, rgba(10, 35, 66, 0.42), rgba(10, 35, 66, 0.18)), url('Media/Images/reovest-building.jpg') no-repeat center center/cover;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,179,0,0.08), rgba(10,35,66,0.18));
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            transition: opacity 320ms ease, transform 300ms ease;
+        }
+
+        /* decorative, blurred yellow accents */
+        .hero-accents { position:absolute; inset:0; pointer-events:none; z-index:1; }
+        .accent { position:absolute; border-radius:50%; filter: blur(18px) saturate(1.1); opacity:0.12; transform:translate3d(0,0,0); transition: transform 300ms ease; }
+        .accent-1 { width:220px; height:220px; background: var(--yellow); left: -40px; top: 20%; }
+        .accent-2 { width:140px; height:140px; background: var(--yellow); right: -20px; top: 62%; opacity:0.14; }
+        .accent-3 { width:80px; height:80px; background: var(--yellow); left: 10%; bottom: 10%; opacity:0.09; }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 920px;
+            width: 100%;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1.2s forwards 0.4s;
+            padding: 2.2rem;
+            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+            backdrop-filter: blur(6px);
+            box-shadow: 0 10px 30px rgba(10,35,66,0.25);
+            text-align: center;
+        }
+
+        .hidden { opacity: 0; }
+
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 5vw, 3.6rem);
+            margin-bottom: 0.6rem;
+            color: var(--white);
+            line-height: 1.02;
+            letter-spacing: -0.5px;
+            text-shadow: 0 6px 18px rgba(0,0,0,0.45);
+            display:inline-block;
+            position:relative;
+        }
+
+        /* animated underline that reveals on load and hover */
+        .h1-accent { position:relative; display:inline-block; }
+        .h1-accent::after {
+            content:''; position:absolute; left:0; right:0; bottom:-8px; height:6px; background:linear-gradient(90deg,var(--yellow), #FFD166); border-radius:8px; transform-origin:left; transform: scaleX(0); transition: transform 420ms cubic-bezier(.2,.9,.2,1);
+        }
+        .hero-content:has(.h1-accent) .h1-accent::after { transform: scaleX(1); }
+        .h1-accent:hover::after { transform: scaleX(1.06); }
+
+        .hero p { color: rgba(255,255,255,0.92); font-size: clamp(0.95rem, 2.2vw, 1.15rem); margin-bottom: 1.25rem; max-width: 720px; margin-left:auto; margin-right:auto; }
+
+        .hero-cta { display:flex; gap:1rem; justify-content:center; align-items:center; margin-top:0.6rem; }
+        .btn { display:inline-block; background: linear-gradient(90deg, var(--yellow), #FFD166); color: var(--navy); padding: 0.95rem 2.2rem; border-radius: 50px; text-decoration: none; font-weight:700; transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease; border:none; box-shadow: 0 12px 30px rgba(10,35,66,0.25); position:relative; overflow:hidden; }
+        .btn:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 18px 40px rgba(10,35,66,0.28); }
+        .btn.btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.12); box-shadow:none; }
+
+        /* ripple */
+        .btn-ripple { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) scale(0); width:220px; height:220px; background: rgba(255,179,0,0.12); border-radius:50%; pointer-events:none; transition: transform 450ms cubic-bezier(.2,.9,.2,1), opacity 450ms; }
+        .btn:active .btn-ripple { transform:translate(-50%,-50%) scale(1); opacity:0; }
+
+        /* Mobile adjustments for hero */
+        @media (max-width: 768px) {
+            .hero { padding: 100px 1rem 60px; background-position: center 30%; }
+            .hero-content { padding: 1.2rem; border-radius: 10px; }
+            .hero h1 { font-size: 1.9rem; }
+            .hero p { font-size: 0.98rem; }
+            .btn { padding: 0.85rem 1.6rem; }
+            .accent { display:none; }
+            .hero-cta { flex-direction:column; gap:0.6rem; }
+        }
+        
+        /* Page Loader & Scroll Animations */
+
+        /* Prevent scroll while loader is visible */
+        html.no-scroll, body.no-scroll { overflow: hidden; }
+
+        .page-loader {
+            position: fixed;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            background: linear-gradient(180deg, rgba(10,35,66,0.95), rgba(10,35,66,0.92));
+            z-index: 20000;
             color: var(--white);
-            padding-top: 80px;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1.5s forwards 0.5s;
+            transition: opacity 450ms cubic-bezier(.2,.9,.2,1), visibility 450ms;
         }
 
-        .hidden {
-            opacity: 0;
-        }
-        
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--white);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--yellow);
-            color: var(--navy);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid var(--yellow);
-        }
-        
-        .btn:hover {
-            background: transparent;
-            color: var(--yellow);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        .page-loader-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        .loader-inner { text-align: center; transform: translateY(0); }
+        .loader-logo { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--yellow); margin-bottom: 1rem; letter-spacing: 0.6px; }
+        .loader-spinner { width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 0.8rem; border: 6px solid rgba(255,255,255,0.12); border-top-color: var(--yellow); animation: loader-spin 1s linear infinite; }
+        .loader-text { color: rgba(255,255,255,0.9); font-size: 0.95rem; opacity: 0.95; }
+
+        @keyframes loader-spin { to { transform: rotate(360deg); } }
+
+        /* Entrance animation base */
+        .animate-on-scroll { opacity: 0; transform: translateY(28px); will-change: transform, opacity; }
+        .animate-on-scroll.in-view { opacity: 1; transform: translateY(0); }
+
+        /* subtle hover/interactive enhancements */
+        .project-card { transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms; }
+        .project-card:hover { transform: translateY(-8px) rotateZ(-0.5deg); box-shadow: 0 25px 40px rgba(10,35,66,0.12); }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .page-loader { transition: none; }
+            .animate-on-scroll, .project-card { transition: none !important; }
+            .loader-spinner { animation: none; }
         }
 
-        .btn-small {
-            padding: 0.5rem 1.5rem;
-            font-size: 0.9rem;
-        }
-        
         /* Stats Section */
         .stats {
             background: var(--navy);
@@ -693,6 +768,7 @@
             align-items: center;
             justify-content: center;
             width: 40px;
+
             height: 40px;
             background: var(--light-navy);
             color: var(--white);
@@ -779,11 +855,19 @@
     </style>
 </head>
 <body>
+    <!-- Page loader -->
+    <div id="page-loader" class="page-loader" role="status" aria-live="polite">
+        <div class="loader-inner">
+            <div class="loader-logo">Craft Build Homes</div>
+            <div class="loader-spinner" aria-hidden="true"></div>
+            <div class="loader-text">Loading…</div>
+        </div>
+    </div>
     <!-- Header & Navigation -->
     <header>
         <div class="container nav-container">
             <div class="logo">
-                <div class="logo-text">Reovest Build<span>Tech</span> & Design</div>
+                <div class="logo-text">Craft Build Homes</div>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
@@ -803,10 +887,18 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-accents" aria-hidden="true">
+            <span class="accent accent-1"></span>
+            <span class="accent accent-2"></span>
+            <span class="accent accent-3"></span>
+        </div>
         <div class="container hero-content">
-            <span class="taglines"><h1>Building Dreams Into Reality</h1></span>
+            <h1><span class="h1-accent">Building Dreams Into Reality</span></h1>
             <p>Premium construction and architectural services with experience creating exceptional spaces that inspire and endure.</p>
-            <a href="#contact" class="btn">Start Your Project</a>
+            <div class="hero-cta">
+                <a href="#contact" class="btn">Start Your Project<span class="sr-only"> (Contact)</span></a>
+                <a href="#projects" class="btn btn-small btn-outline">View Projects</a>
+            </div>
         </div>
     </section>
 
@@ -832,7 +924,7 @@
             <div class="about-container">
                 <div class="about-content">
                     <h3>Building Excellence</h3>
-                    <p>Reovest is a premium construction and architecture company dedicated to turning our clients' dreams into reality. With years of experience, we've established ourselves as leaders in innovative design and quality construction.</p>
+                    <p>Craft Build Homes is a premium construction and architecture company dedicated to turning our clients' dreams into reality. With years of experience, we've established ourselves as leaders in innovative design and quality construction.</p>
                     <p>Our team of <strong>architects</strong>, <strong>engineers</strong>, and <strong>builders</strong> work collaboratively to ensure every project meets the highest standards of excellence. We believe in transparent communication, attention to detail, and delivering on our promises.</p>
                     <p>From initial concept to final completion, we're with you every step of the way, ensuring your vision is realized exactly as you imagined—or even better.</p>
                 </div>
@@ -1168,7 +1260,7 @@
                     <div class="contact-details">
                         <p><i class="fas fa-map-marker-alt"></i> Mutoko, Zimbabwe</p>
                         <p><i class="fas fa-phone"></i> +263 77 777 7777</p>
-                        <p><i class="fas fa-envelope"></i> info@reovest.co.zw</p>
+                        <p><i class="fas fa-envelope"></i> info@craftbuildhomes.co.zw</p>
                     </div>
                     <div class="mt-4">
                         <h4>Business Hours</h4>
@@ -1214,7 +1306,7 @@
     <footer>
         <div class="container footer-container">
             <div class="footer-col">
-                <h4>Reovest</h4>
+                <h4>Craft Build Homes</h4>
                 <p>Building dreams into reality with premium construction and architectural services since 2008.</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/profile.php?id=61572669396263" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -1247,7 +1339,7 @@
             </div>
         </div>
         <div class="container copyright">
-            <p>&copy; 2025 Reovest BuildTech & Design. All Rights Reserved.</p>
+            <p>&copy; 2025 Craft Build Homes. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -1373,6 +1465,106 @@
                 }
             });
         });
+
+        // --- Hero interactive: parallax accents, in-view brighten, CTA ripple ---
+        (function() {
+            const hero = document.querySelector('.hero');
+            if (!hero) return;
+            const accents = hero.querySelectorAll('.accent');
+            const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+
+            // Parallax for pointer devices
+            if (!isTouch) {
+                hero.addEventListener('mousemove', (e) => {
+                    const rect = hero.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width - 0.5);
+                    const y = ((e.clientY - rect.top) / rect.height - 0.5);
+                    hero.style.backgroundPosition = `${50 + x*6}% ${40 + y*6}%`;
+                    accents.forEach((el, i) => {
+                        const depth = (i + 1) * 10;
+                        el.style.transform = `translate(${x*depth}px, ${y*depth}px)`;
+                    });
+                });
+
+                hero.addEventListener('mouseleave', () => {
+                    hero.style.backgroundPosition = '';
+                    accents.forEach(el => el.style.transform = '');
+                });
+            }
+
+            // Brighten overlay slightly when hero is in view
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        hero.classList.add('hero-inview');
+                    } else {
+                        hero.classList.remove('hero-inview');
+                    }
+                });
+            }, { threshold: 0.2 });
+            io.observe(hero);
+
+            // CTA micro-interaction: ripple on click
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const ripple = document.createElement('span');
+                    ripple.className = 'btn-ripple';
+                    btn.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+        })();
+
+        // --- Page loader and scroll-triggered entrance animations ---
+        (function() {
+            const loader = document.getElementById('page-loader');
+            if (loader) {
+                // prevent scroll while loader is present
+                document.documentElement.classList.add('no-scroll');
+
+                // Fallback in case load event fires earlier; we still want a nice fade-out
+                const hideLoader = () => {
+                    document.documentElement.classList.remove('no-scroll');
+                    loader.classList.add('page-loader-hidden');
+                    setTimeout(() => { if (loader && loader.parentNode) loader.parentNode.removeChild(loader); }, 700);
+                };
+
+                // Remove loader when page fully loads
+                window.addEventListener('load', hideLoader);
+
+                // Also ensure loader disappears after 6s in worst-case
+                setTimeout(hideLoader, 6000);
+            }
+
+            // Query selectors we want animated on enter
+            const selectors = ['.service-card', '.tp-service-card', '.project-card', '.about-content', '.about-video', '.testimonial', '.stat-item', '.service-category', '.process-step', '.footer-col'];
+            const elements = [];
+            selectors.forEach(sel => document.querySelectorAll(sel).forEach(el => elements.push(el)));
+
+            // Initialize styles and stagger
+            elements.forEach((el, i) => {
+                el.classList.add('animate-on-scroll');
+                const dur = 420 + ((i % 6) * 80);
+                const delay = (i % 6) * 60;
+                el.style.transitionDuration = dur + 'ms';
+                el.style.transitionDelay = delay + 'ms';
+            });
+
+            const ob = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            elements.forEach(el => ob.observe(el));
+
+            // If user prefers reduced motion, skip animations
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                elements.forEach(el => { el.classList.add('in-view'); el.style.transition = 'none'; });
+            }
+        })();
     </script>
 </body>
 </html>
